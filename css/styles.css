@@ -188,3 +188,12 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.error{
+  border-color: red;
+}
+
+img{
+  height: 200px;
+  width: 500px;
+}
