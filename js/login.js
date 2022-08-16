@@ -2,9 +2,17 @@ function login(){
     let usuario = document.getElementById("form2Example18").value;
     let password = document.getElementById("form2Example28").value;
     if(usuario == "" || password == ""){
-        document.getElementById("form2Example28").classList.add("error");
+    if(usuario == "" ){
         document.getElementById("form2Example18").classList.add("error");
-        alert("Debe ingresar usuario y contraseña");
+    }
+    if(password == ""){
+        document.getElementById("form2Example28").classList.add("error");
+    }
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ingresaron todos los datos, intente nuevamente por favor',
+        })
     }else {
         location.href = "index.html";
     }
