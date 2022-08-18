@@ -14,6 +14,7 @@ function login(){
             text: 'No se ingresaron todos los datos, intente nuevamente por favor',
         })
     }else {
+        localStorage.setItem('user', usuario);
         location.href = "index.html";
     }
 }

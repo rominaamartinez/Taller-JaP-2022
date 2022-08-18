@@ -11,4 +11,26 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+
+    let usuario = localStorage.getItem('user');
+    if(usuario === null){ 
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Debe iniciar sesión para acceder a la web',
+        }).then(function(){
+            location.href = "login.html"
+        })
+
+    }else{
+        Swal.fire({
+            icon: 'success',
+            title: 'Iniciaste sesión',
+        })
+    }
+    document.getElementById("cerrar").addEventListener("click", ()=>{
+        localStorage.clear();
+        location.href = "login.html";
+    })
 });
+
