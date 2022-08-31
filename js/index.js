@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded", function(){
             title: 'Iniciaste sesión',
         })
     }
-    document.getElementById("cerrar").addEventListener("click", ()=>{
-        localStorage.clear();
-        location.href = "login.html";
-    })
+ 
 });
 

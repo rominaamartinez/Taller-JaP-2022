@@ -40,3 +40,13 @@ let getJSONData = function(url){
     });
 }
 
+document.addEventListener("DOMContentLoaded", ()=>{
+
+
+  document.getElementById("barra").innerHTML += '<li class="d-flex" class="nav-item" id="usActual"> <a class="nav-link"  href="my-profile.html">'+ localStorage.getItem("user") +'</a></li>';
+  document.getElementById("usActual").innerHTML += '<a class="nav-link" id="cerrar" href="login.html">Cerrar Sesión</a>'
+  document.getElementById("cerrar").addEventListener("click", ()=>{
+    localStorage.removeItem("user");
+    location.href = "login.html";
+})
+})
