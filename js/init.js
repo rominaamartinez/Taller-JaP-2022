@@ -41,11 +41,22 @@ let getJSONData = function(url){
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-
-  document.getElementById("barra").innerHTML += '<li class="d-flex" class="nav-item" id="usActual"> <a class="nav-link"  href="my-profile.html">'+ localStorage.getItem("user") +'</a></li>';
-  document.getElementById("usActual").innerHTML += '<button id="cerrar" type="button" class="btn btn-danger">Cerrar Sesión</button>'
-  document.getElementById("cerrar").addEventListener("click", ()=>{
-    localStorage.removeItem("user");
-    location.href = "login.html";
-})
+  if(localStorage.getItem("user") != null){
+    document.getElementById("barra").innerHTML += `
+    <li class="d-flex" class="nav-item" id="usActual">
+    <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      ${localStorage.getItem("user")}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+    <li><a id="cerrar" class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+  </ul>
+    </div>
+    </li>'`;
+    document.getElementById("cerrar").addEventListener("click", ()=>{
+      localStorage.removeItem("user");
+  })
+}
 })

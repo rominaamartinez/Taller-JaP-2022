@@ -7,10 +7,9 @@ function showProducts(array){
     for(let i = 0; i < array.length; i++){ 
         let producto = array[i];
         if (((minPrec == undefined) || (minPrec != undefined && parseInt(producto.cost) >= minPrec)) &&
-        ((maxPrec == undefined) || (maxPrec != undefined && parseInt(producto.cost) <= maxPrec))){
-
-        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        ((maxPrec == undefined) || (maxPrec != undefined && parseInt(producto.cost) <= maxPrec))){ 
+            htmlContentToAppend += `
+        <div onclick="setCatID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
             <div class="row">
                 <div class="col-3">
                     <img src="` + producto.image + `" alt="product image" class="img-thumbnail">
@@ -40,10 +39,14 @@ function buscar(productos){
     showProducts(arrayFiltrado);
 }
 
+function setCatID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData( PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+        if (resultObj.status === "ok"){
             productsArray = resultObj.data;
             showProducts(productsArray.products);
         }

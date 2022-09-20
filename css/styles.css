@@ -193,7 +193,7 @@ a.custom-card:hover {
   border-color: red;
 }
 
-img{
+#imgLogin{
   height: 200px;
   width: 500px;
 }
@@ -202,6 +202,38 @@ img{
   width: 25%;
 }
 
-#titulo{
+.textoCentrado{
   text-align: center;
+}
+
+.seleccionar{
+  width: 90px;
+  height: 70px;
+  margin-top: 10px;
+  border-style: hidden;
+}
+#principal{
+  width: 500px;
+  height: 400px;
+}
+
+#vendidos{
+  font-size: 12px;
+}
+
+#enviarCom{
+  margin-left: 225px;
+}
+#puntuacion{
+  margin-left: 5px;
+  height: 30px;
+  width: 40px;
+}
+
+.unchecked{
+  color: grey;
+}
+
+#cerrar{
+  background-color: rgba(255, 0, 0, 0.26);
 }
