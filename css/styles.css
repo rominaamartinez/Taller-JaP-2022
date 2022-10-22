@@ -222,7 +222,7 @@ a.custom-card:hover {
 }
 
 #enviarCom{
-  margin-left: 225px;
+  margin-left: 265px;
 }
 #puntuacion{
   margin-left: 5px;
@@ -236,4 +236,78 @@ a.custom-card:hover {
 
 #cerrar{
   background-color: rgba(255, 0, 0, 0.26);
+}
+
+.puntitos label{
+    float: right;
+    color: #c1b8b8;
+    font-size: 30px; 
+}
+
+.puntitos {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  }
+
+  .puntitos input {
+  position: absolute;
+  top: -100px;
+  }
+
+  .puntitos label:hover,
+    .puntitos label:hover ~ label,
+    .puntitos input:checked ~ label {
+    color:orange;
+    }
+  
+.dropdown:hover .dropdown-menu{
+      display: block;
+}
+
+
+body{
+  margin-top:20px;
+  background:#eee;
+  
+}
+.ui-w-40 {
+  width: 150px !important;
+  height: auto;
+}
+
+.card{
+  box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);    
+}
+
+.ui-product-color {
+  display: inline-block;
+  overflow: hidden;
+  margin: .144em;
+  width: .875rem;
+  height: .875rem;
+  border-radius: 10rem;
+  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+  vertical-align: middle;
+}
+
+.formulario{
+  width: 250px;
+}
+
+.cardPricelg{
+  margin-top: 50px;
+  margin-right: 10px;
+  height: 350px;
+}
+
+.incompleto{
+  color: red;
+  text-decoration: underline;
+}
+
+.containerPago{
+  margin-left: 20px;
+  margin-right: 20px;
 }

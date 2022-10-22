@@ -16,9 +16,11 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   
+
 </head>
 
 <body>
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -63,7 +65,7 @@
                   <p id="vendidos">Cant. Vendidos: </p>
                   <div class="d-flex">
                       <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                      <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                      <button id="añadirCarrito" class="btn btn-outline-dark flex-shrink-0" type="button">
                           <i class="bi-cart-fill me-1"></i>
                           Añadir al carrito
                       </button>
@@ -83,18 +85,19 @@
             <br>
             <div class="d-flex">
               <p>Puntuacion:</p>
-            <select class="rounded" name="puntaje" id="puntuacion">
-              <option >1</option>
-              <option >2</option>
-              <option >3</option>
-              <option >4</option>
-              <option >5</option>
-            </select>
+              
             <button class="btn btn-dark" id="enviarCom">Enviar</button>
           </div>
-            
+          <div id="puntDinam" class="puntitos">
+          </div>
+            <div class="d-flex">
+              <p>Seleccionaste: </p>
+              <p id="valor">1</p>
+            </div>
           </div>
         </div>
+        
+
     
   </section>
   <section class="py-5 bg-light">

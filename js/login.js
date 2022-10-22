@@ -20,6 +20,7 @@ function login(){
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
+    localStorage.setItem("carrito2", null)
     document.getElementById("boton").addEventListener("click", ()=>{
         login();
     })

@@ -49,14 +49,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
       ${localStorage.getItem("user")}
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+    <li><a class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html"><i class="fas fa-user"></i> Mi perfil</a></li>
     <li><a id="cerrar" class="dropdown-item" href="login.html">Cerrar sesión</a></li>
   </ul>
     </div>
     </li>'`;
     document.getElementById("cerrar").addEventListener("click", ()=>{
-      localStorage.removeItem("user");
-  })
+    localStorage.removeItem("user");
+    })
+  
 }
 })

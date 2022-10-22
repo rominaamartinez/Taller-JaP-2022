@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
+  
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -34,13 +35,195 @@
         </ul>
       </div>
     </div>
+  
   </nav>
   <main>
+    <div class="row g-0">
+      <div class="col">
+    <div class="container px-3 my-5 clearfix">
+      <!-- Shopping cart table -->
+      <div class="card">
+          <div class="card-header">
+              <h2>Carrito</h2>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered m-0">
+                  <thead>
+                    <tr>
+                      <!-- Set columns width -->
+                      <th class="text-center py-3 px-4" style="min-width: 400px;">Producto y detalles</th>
+                      <th class="text-right py-3 px-4" style="width: 100px;">Precio</th>
+                      <th class="text-center py-3 px-4" style="width: 120px;">Cant.</th>
+                      <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                      <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i  class="ino ion-md-trash"></i></a></th>
+                    </tr>
+                  </thead>
+                  <tbody id="listaArt">
+          
+                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- / Shopping cart table -->
+              <div id="cantIncorrecta">
+
+              </div>
+              <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                <div class="mt-4">
+                  <label class="text-muted font-weight-normal">Promocode</label>
+                  <input type="text" placeholder="ABC" class="form-control">
+                </div>
+                
+              
+          
+              <div class="float-right">
+                <a class="btn btn-lg btn-default md-btn-flat mt-2 mr-3" href=categories.html>Seguir comprando</a>
+              </div>
+              
+              
+            </div>
+            <hr>
+            
+            <button id="btnTipoEnvio" class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Seleccionar envío
+            </button>
+            <div class="incompleto" id="avisoIncompleto">
+          </div>
+            <div class="collapse" id="collapseExample">
+              <div id="tipoEnvio" class="card card-body">
+                <br>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="btn-group me-2" role="group" aria-label="Second group">
+        <button id="opcion1" type="button" class="btn btn-secondary">Premium</button>
+        <button id="opcion2" type="button" class="btn btn-secondary">Express</button>
+        <button id="opcion3" type="button" class="btn btn-secondary">Standard</button>
+    </div>
+        <div id="infoEnvio" class="d-flex">
+            <p>Seleccionaste <strong>Premium</strong>: 2 a 5 dias (15%)
+            </p>
+        </div>
+        
+        <form id="formulario" class="needs-validation" novalidate>
+        <div>
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" class="form-control formulario" id="calle" value="" required>
+            <div class="invalid-feedback">
+        Por favor introduzca la calle.
+      </div>
+        </div>
+        <div>
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" class="form-control formulario" id="numero" value="" required>
+            <div class="invalid-feedback">
+        Por favor introduzca el número.
       </div>
     </div>
+    <div>
+        <label for="esquina" class="form-label">Esquina</label>
+        <input type="text" class="form-control formulario" id="esquina" value="" required>
+        <div class="invalid-feedback">
+          Por favor introduzca la esquina.
+        </div>
+    </div>
+    
+</div>
+              </div>
+            </div>
+
+        </div>
+        
+    </div>
+  </div>
+  <!--escondido en tamaño lg-->
+  <div class="d-xl-none d-xxl-block card">
+    <div id="precioTotal" class="card-body">
+      <h5 class="card-title">Costo</h5>
+    </div>
+    
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Seleccionar método de pago
+    </a>
+    <div class="incompleto" id="pagoIncompleto">
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Método de pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="btn-group me-2" role="group" aria-label="Second group">
+              <button id="credito" type="button" class="btn btn-secondary" >Tarjeta de crédito</button>
+              <button id="transferencia" type="button" class="btn btn-secondary">Trasferencia bancaria</button>
+            </div>
+            
+          </div>
+          <div id="collapseTipoPago">
+            
+          </div>
+          <br>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Guardar</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <button type="submit" class="btn btn-lg btn-dark mt-2" id="finCompra">Checkout</button> 
+  </div>
+
+
+  <!--fin escondido en tamaño xl-->
+  <!-- visible siempre menos en xl-->
+  </div>
+  <div class=" d-none d-xl-block d-xxl-none col col-md-3">
+    <div class=" card cardPricelg">
+      <div id="precioTotal" class="card-body">
+        <h5 class="card-title">Costo</h5>
+      </div>
+      
+      <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Seleccionar método de pago
+      </a>
+      <div class="incompleto" id="pagoIncompleto">
+
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Método de pago</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="btn-group me-2" role="group" aria-label="Second group">
+                <button id="credito" type="button" class="btn btn-secondary" >Tarjeta de crédito</button>
+                <button id="transferencia" type="button" class="btn btn-secondary">Trasferencia bancaria</button>
+              </div>
+              
+            </div>
+            <div id="collapseTipoPago">
+              
+            </div>
+            <br>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Guardar</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <button type="submit" class="btn btn-lg btn-dark mt-2" id="finCompra">Checkout</button> 
+
+
+    </div>
+    </div>
+  </form>
+  </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -63,6 +246,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  
 </body>
 
 </html>

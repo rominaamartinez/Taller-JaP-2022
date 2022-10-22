@@ -4,7 +4,8 @@ let comentariosNuevos = [];
 
 function showArticle(prod){
     document.getElementById("catNom").innerHTML += prod.category;
-    document.getElementById("fotoPrincipal").innerHTML = '<img class="card-img-top mb-5 mb-md-0" src="'+prod.images[1]+'" alt="..." />';        document.getElementById("precio").innerHTML = prod.currency +" " + producto.cost;
+    document.getElementById("fotoPrincipal").innerHTML = '<img class="card-img-top mb-5 mb-md-0" src="'+prod.images[0]+'" alt="..." />';        
+    document.getElementById("precio").innerHTML = prod.currency +" " + producto.cost;
     document.getElementById("descripcion").innerHTML += prod.description;
     document.getElementById("nombre").innerHTML = prod.name;
     document.getElementById("vendidos").innerHTML += prod.soldCount;
@@ -65,23 +66,33 @@ function puntosEstrella(puntos, categoria){
     let estrellas = "";
     for(let i=1; i<=5; i++){
         if(i<=puntos){
-            if(categoria == "Autos"){
+            switch(categoria){
+            case"Autos":
                 estrellas += '<i class="fas fa-car checked"></i>';
-            }else if(categoria == "Juguetes"){
+            break;
+            case "Juguetes":
                 estrellas += '<i class="fas fa-puzzle-piece checked"></i>';
-            }else if(categoria == "Muebles"){
+            break;
+            case "Muebles":
                 estrellas += '<i class="fas fa-couch checked"></i>';
-            }else
+            break;
+            default:
             estrellas += '<i class="fas fa-star checked"></i>';
-        }else{
-            if(categoria == "Autos"){
+            }
+        }else {
+            switch(categoria){
+            case "Autos":
                 estrellas += '<i class="fas fa-car unchecked"></i>'
-            }else if(categoria == "Juguetes"){
+            break;
+            case "Juguetes":
                 estrellas += '<i class="fas fa-puzzle-piece unchecked"></i>';
-            }else if(categoria == "Muebles"){
+            break;
+            case "Muebles":
                 estrellas += '<i class="fas fa-couch unchecked"></i>';
-            }else
+            break;
+            default:
             estrellas += '<i class="far fa-star"></i>';
+            }
         }
     }
     return estrellas;
@@ -125,7 +136,8 @@ function muestraReloj() {
 
 
 function comentar(comentarios, categoria){
-        let puntos = document.getElementById("puntuacion").value;
+        
+        let puntos = document.getElementById("valor").innerHTML;
         let texto = document.getElementById("comentNuevo").value;
         let usuario = localStorage.getItem("user");
         let fechaYHora = muestraReloj();
@@ -138,10 +150,71 @@ function comentar(comentarios, categoria){
         mostrarComentarios(comentarios, categoria);
 }
 
+function puntosDinamicos(cat){
+    let din = "";
+    switch(cat){
+    case "Autos":
+
+        din = `
+        <input id="radio1" type="radio" name="estrellas" value="5"onclick="document.getElementById('valor').innerHTML='5'"><!--
+  --><label for="radio1"><i class="fas fa-car "></i></label><!--
+  --><input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'"><!--
+  --><label for="radio2"><i class="fas fa-car "></i></i></label><!--
+  --><input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'"><!--
+  --><label for="radio3"><i class="fas fa-car "></i></label><!--
+  --><input id="radio4" type="radio" name="estrellas" value="2"onclick="document.getElementById('valor').innerHTML='2'"><!--
+  --><label for="radio4"><i class="fas fa-car "></i></label><!--
+  --><input checked id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'"><!--
+  --><label for="radio5"><i class="fas fa-car "></i></label><br>`
+  break;
+
+    case "Juguetes":
+        din = `
+        <input id="radio1" type="radio" name="estrellas" value="5"onclick="document.getElementById('valor').innerHTML='5'"><!--
+  --><label for="radio1"><i class="fas fa-puzzle-piece"></i></label><!--
+  --><input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'"><!--
+  --><label for="radio2"><i class="fas fa-puzzle-piece"></i></i></label><!--
+  --><input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'"><!--
+  --><label for="radio3"><i class="fas fa-puzzle-piece"></i></label><!--
+  --><input id="radio4" type="radio" name="estrellas" value="2"onclick="document.getElementById('valor').innerHTML='2'"><!--
+  --><label for="radio4"><i class="fas fa-puzzle-piece"></i></label><!--
+  --><input checked id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'"><!--
+  --><label for="radio5"><i class="fas fa-puzzle-piece"></i></label><br>`
+  break;
+    case "Muebles":
+        din = `
+        <input id="radio1" type="radio" name="estrellas" value="5"onclick="document.getElementById('valor').innerHTML='5'"><!--
+  --><label for="radio1"><i class="fas fa-couch"></i></label><!--
+  --><input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'"><!--
+  --><label for="radio2"><i class="fas fa-couch"></i></i></label><!--
+  --><input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'"><!--
+  --><label for="radio3"><i class="fas fa-couch"></i></label><!--
+  --><input id="radio4" type="radio" name="estrellas" value="2"onclick="document.getElementById('valor').innerHTML='2'"><!--
+  --><label for="radio4"><i class="fas fa-couch"></i></label><!--
+  --><input checked id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'"><!--
+  --><label for="radio5"><i class="fas fa-couch"></i></label><br>`
+  break;
+    default:
+    din = `
+    <input id="radio1" type="radio" name="estrellas" value="5"onclick="document.getElementById('valor').innerHTML='5'"><!--
+--><label for="radio1"><i class="fas fa-star"></i></label><!--
+--><input id="radio2" type="radio" name="estrellas" value="4" onclick="document.getElementById('valor').innerHTML='4'"><!--
+--><label for="radio2"><i class="fas fa-star"></i></i></label><!--
+--><input id="radio3" type="radio" name="estrellas" value="3" onclick="document.getElementById('valor').innerHTML='3'"><!--
+--><label for="radio3"><i class="fas fa-star"></i></label><!--
+--><input id="radio4" type="radio" name="estrellas" value="2"onclick="document.getElementById('valor').innerHTML='2'"><!--
+--><label for="radio4"><i class="fas fa-star"></i></label><!--
+--><input checked id="radio5" type="radio" name="estrellas" value="1" onclick="document.getElementById('valor').innerHTML='1'"><!--
+--><label for="radio5"><i class="fas fa-star"></i></label><br>`
+
+}
+    document.getElementById("puntDinam").innerHTML = din;  
+}
+
+
 document.addEventListener("DOMContentLoaded", ()=>{
     getJSONData(PRODUCT_INFO_URL + localStorage.getItem("prodID") + EXT_TYPE).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+        if (resultObj.status === "ok"){
             producto = resultObj.data;
             showArticle(producto);
             mostrarProdRelacionados(producto.relatedProducts);
@@ -153,24 +226,47 @@ document.addEventListener("DOMContentLoaded", ()=>{
             document.getElementById("fotoPrincipal").innerHTML = foto.innerHTML;
             })
         }
-        /*for(let articulo of producto.relatedProducts){
-            articulo.addEventListener("click", ()=>{
-                window.href =
-            })
-        } esto seria para apretar el articulo relacionado y que redirija a la pagina que corresponde, esta sin terminar*/
-    
+        
         getJSONData(PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("prodID") + EXT_TYPE).then(function(resultObj){
             if (resultObj.status === "ok"){
                 comentarios = resultObj.data;
                 mostrarComentarios(comentarios, producto.category);
-                
+                puntosDinamicos(producto.category);
             }
         })
         document.getElementById("enviarCom").addEventListener("click", ()=>{
             comentar(comentarios, producto.category);
-            document.getElementById("puntuacion").value = "";
+            puntosDinamicos(producto.category);
             document.getElementById("comentNuevo").value = "";
         })
+        document.getElementById("añadirCarrito").addEventListener("click", ()=>{
+            let aux = localStorage.getItem("carrito2");
+            let array = [];
+            if( aux != "null"){ //si no if y else no anda
+                array = JSON.parse(localStorage.getItem("carrito2"))
+                console.log("hola2")
+                array.push({
+                    id: producto.id,
+                    name: producto.name,
+                    currency: producto.currency,
+                    unitCost: producto.cost,
+                    image: producto.images[0]
+                });
+                localStorage.setItem("carrito2", JSON.stringify(array));
+            }else{
+                console.log("hola3")
+                
+                array.push({
+                    id: producto.id,
+                    name: producto.name,
+                    currency: producto.currency,
+                    unitCost: producto.cost,
+                    image: producto.images[0]
+                });
+                localStorage.setItem("carrito2", JSON.stringify(array));
+            }
+        })
     });
+    
   
 })
