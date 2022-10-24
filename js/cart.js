@@ -1,6 +1,8 @@
 let articulosArray = [];
 let arrayLocal = [];
 let borrarArray = document.getElementsByName("borrar");
+let flag1 = false;
+let flag2 = false;
 
 
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -92,48 +94,8 @@ function calcularPrecioPorCant(i){
     mostrarPrecioTotal(tipoEnvio);
 }
 
-function mostrarTipoEnvio(){
-document.getElementById("tipoEnvio").innerHTML =`
-    <br>
-    <div class="container">
-    <div class="btn-group me-2" role="group" aria-label="Second group">
-        <button id="opcion1" type="button" class="btn btn-secondary">Premium</button>
-        <button id="opcion2" type="button" class="btn btn-secondary">Express</button>
-        <button id="opcion3" type="button" class="btn btn-secondary">Standard</button>
-    </div>
-        <div id="infoEnvio" class="d-flex">
-            <p>Seleccionaste <strong>Premium</strong>: 2 a 5 dias (15%)
-            </p>
-        </div>
-        
-        <form class="needs-validation" novalidate>
-        <div>
-            <label for="validationCustom01" class="form-label">Calle</label>
-            <input type="text" class="form-control formulario">
-            <div class="invalid-feedback">
-        Por favor introduzca la calle.
-      </div>
-        </div>
-        <div>
-            <label for="validationCustom02" class="form-label">Número</label>
-            <input type="text" class="form-control formulario">
-            <div class="invalid-feedback">
-        Por favor introduzca el número.
-      </div>
-        </div>
-        <div>
-            <label for="validationCustom03" class="form-label">Esquina</label>
-            <input type="text" class="form-control formulario">
-            <div class="invalid-feedback">
-        Por favor introduzca la esquina.
-      </div>
-        </div>
-        </form>
-    </div>
-`
-}
-
 function calcularCostoEnvio(tipoEnvio, subtotal){
+    if(subtotal != 0){
     switch(tipoEnvio){
         case "Premium": return subtotal * 0.15;
         break;
@@ -142,11 +104,16 @@ function calcularCostoEnvio(tipoEnvio, subtotal){
         case "Standard": return subtotal* 0.05;
         break;
     }
+    }else {
+            return 0;
+        }
+    
 }
 
 function mostrarCostoEnvio(tipoEnvio){
     let subtotal = document.getElementById("cantSubtotal").innerHTML;
-    subtotal = subtotal.substring(4, subtotal.length-1);
+    subtotal = subtotal.substring(4, subtotal.length);
+    console.log(subtotal)
     let costoEnvio = calcularCostoEnvio(tipoEnvio, parseInt(subtotal));
     
     let htmlContentToAppend = `
@@ -224,11 +191,16 @@ function mostrarDetallesDePago(pago){
 function validarCantidades(){
     let items = document.getElementsByClassName("cantItem");
     let i = 0;
-    while(i<items.length && items[i].value != 0){
+    while(i<items.length-1 && items[i].value != 0){ 
         i++;
     }
-    if(i> items.length){
+    console.log(i)
+    if(items[i].value == 0){
         document.getElementById("cantIncorrecta").innerHTML = `<p class="incompleto">No pueden haber productos con cantidad 0</p>`
+        return false;
+    }else{
+        document.getElementById("cantIncorrecta").innerHTML = ``
+        return true;
     }
 }
 
@@ -238,8 +210,10 @@ function validarTipoPago(tipoPago){
         if(nCuenta.value == ""){
             document.getElementById("pagoIncompleto").innerHTML = "<p>Hay campos sin completar</p>"
             nCuenta.classList.add("error")
+            return false;
         }else{
             document.getElementById("pagoIncompleto").innerHTML = ""
+            return true;
         }
         
     }else{
@@ -258,8 +232,10 @@ function validarTipoPago(tipoPago){
                 vence.classList.add("error")
             }
             document.getElementById("pagoIncompleto").innerHTML = "<p>Hay campos sin completar</p>"
+            return false;
         }else{
             document.getElementById("pagoIncompleto").innerHTML = ""
+            return true;
         }
         
     }
@@ -350,26 +326,34 @@ document.addEventListener("DOMContentLoaded", ()=>{
         localStorage.setItem("tipoPago", "Transferencia");
         mostrarDetallesDePago("Transferencia")
     })
+    document.getElementById("finCompra").addEventListener("click", ()=>{
+        let tipoPago= localStorage.getItem("tipoPago")
+        flag1=validarTipoPago(tipoPago);
+        flag2=validarCantidades();
+    })
 
    let form = document.getElementById("formulario");
     form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
+        if (!form.checkValidity() || flag1 == false || flag2==false) {
+        if(!form.checkValidity()){
         document.getElementById("avisoIncompleto").innerHTML = "<p>Hay campos sin completar</p>"
-          event.preventDefault()
-          event.stopPropagation()
+        } 
+        event.preventDefault()
+        event.stopPropagation()
         form.classList.add('was-validated')
+        if(form.checkValidity()){
+            document.getElementById("avisoIncompleto").innerHTML = ""
+        }
       }else{
         document.getElementById("avisoIncompleto").innerHTML = ""
+            Swal.fire({
+                icon: 'success',
+                title: 'Finalizó la compra con éxito',
+            })
+            event.preventDefault()
+            event.stopPropagation()
       }
 
     })
-
-    document.getElementById("finCompra").addEventListener("click", ()=>{
-        let tipoPago= localStorage.getItem("tipoPago")
-        validarTipoPago(tipoPago);
-        validarCantidades();
-    })
-    
-    
 
 })

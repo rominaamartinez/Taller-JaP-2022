@@ -311,3 +311,20 @@ body{
   margin-left: 20px;
   margin-right: 20px;
 }
+
+@media (min-width: 768px){
+  #cardPrices{
+    width: 960px;
+    
+  }
+}
+
+@media (min-width: 975px){
+  #cardPrices{
+  margin-top: 50px;
+  margin-right: 10px;
+  height: 350px;
+  width: auto;
+  
+  }
+}

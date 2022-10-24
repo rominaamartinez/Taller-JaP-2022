@@ -135,52 +135,9 @@
         
     </div>
   </div>
-  <!--escondido en tamaño lg-->
-  <div class="d-xl-none d-xxl-block card">
-    <div id="precioTotal" class="card-body">
-      <h5 class="card-title">Costo</h5>
-    </div>
-    
-    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Seleccionar método de pago
-    </a>
-    <div class="incompleto" id="pagoIncompleto">
-
-    </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Método de pago</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="btn-group me-2" role="group" aria-label="Second group">
-              <button id="credito" type="button" class="btn btn-secondary" >Tarjeta de crédito</button>
-              <button id="transferencia" type="button" class="btn btn-secondary">Trasferencia bancaria</button>
-            </div>
-            
-          </div>
-          <div id="collapseTipoPago">
-            
-          </div>
-          <br>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Guardar</button>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <button type="submit" class="btn btn-lg btn-dark mt-2" id="finCompra">Checkout</button> 
   </div>
-
-
-  <!--fin escondido en tamaño xl-->
-  <!-- visible siempre menos en xl-->
-  </div>
-  <div class=" d-none d-xl-block d-xxl-none col col-md-3">
-    <div class=" card cardPricelg">
+  <div class="col col-md-3">
+    <div id="cardPrices" class=" card">
       <div id="precioTotal" class="card-body">
         <h5 class="card-title">Costo</h5>
       </div>
@@ -246,6 +203,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   
 </body>
 

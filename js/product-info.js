@@ -240,11 +240,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             document.getElementById("comentNuevo").value = "";
         })
         document.getElementById("añadirCarrito").addEventListener("click", ()=>{
+            document.getElementById("animacion").innerHTML = `<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_vbrwdppa.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"autoplay></lottie-player>`
             let aux = localStorage.getItem("carrito2");
             let array = [];
             if( aux != "null"){ //si no if y else no anda
                 array = JSON.parse(localStorage.getItem("carrito2"))
-                console.log("hola2")
                 array.push({
                     id: producto.id,
                     name: producto.name,
@@ -254,7 +254,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 });
                 localStorage.setItem("carrito2", JSON.stringify(array));
             }else{
-                console.log("hola3")
                 
                 array.push({
                     id: producto.id,
