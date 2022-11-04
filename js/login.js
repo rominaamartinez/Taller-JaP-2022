@@ -21,6 +21,11 @@ function login(){
 
 document.addEventListener("DOMContentLoaded", ()=>{
     localStorage.setItem("carrito2", null)
+    localStorage.setItem("nombre1", null)
+    localStorage.setItem("nombre2", null)
+    localStorage.setItem("apellido1", null)
+    localStorage.setItem("apellido2", null)
+    localStorage.setItem("telefono", null)
     document.getElementById("boton").addEventListener("click", ()=>{
         login();
     })

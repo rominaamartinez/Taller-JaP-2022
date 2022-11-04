@@ -328,3 +328,77 @@ body{
   
   }
 }
+
+.adelante{
+  position: absolute;
+  z-index: 150;
+}
+
+.cardProfile{
+  margin-top: 20px;
+}
+
+
+.iconProfile{
+  font-size: 80px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.rounded-circle{
+  margin-left: 20%;
+  margin-right: auto;
+}
+/*pantalla menor a la mia*/
+@media (max-width: 1198px){
+  #cardInfoPerfil{
+    width: 700px;
+    height: 250px;
+  }
+  #imagePerfil{
+    width: 100px;
+    height: 100px;
+    float:left;
+    margin-top: 20px;
+    background-color: white;
+
+  }
+  #datosPersonales{
+    float: right;
+    margin-right: 20px;
+  }
+  #btnEditar{
+    height: 30px;
+  }
+  #cardOpciones{
+    height: 250px;
+    width:700px;
+  }
+}
+/*pantalla de computadora mia*/
+@media (min-width: 1199px){
+  #cardInfoPerfil{
+    width: 350px; 
+    height: 550px;
+  }
+  #imagePerfil{
+    width: 170px;
+    height:160px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+  }
+  #btnEditar{
+    margin-top: 160px;
+    height: 30px;
+    margin-left: 205px;
+  }
+  #cardOpciones{
+    height: 250px;
+    width:700px;
+    margin-left: 20px;
+  }
+  #animacionCard{
+    margin-left: 20px;
+  }
+}

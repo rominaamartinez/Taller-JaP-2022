@@ -1,6 +1,5 @@
 let articulosArray = [];
 let arrayLocal = [];
-let borrarArray = document.getElementsByName("borrar");
 let flag1 = false;
 let flag2 = false;
 
@@ -247,18 +246,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
         if(resultObj.status === "ok"){
             articulosArray = resultObj.data.articles;
             arrayLocal = localStorage.getItem("carrito2")
-            localStorage.setItem("carrito1", JSON.stringify(articulosArray))
             if(arrayLocal != "null"){
                 let array = JSON.parse(arrayLocal);
                 for(let item of array){
                     articulosArray.push(item);
-                }
-             
-                //localStorage.setItem("carrito2", JSON.stringify(articulosArray))
+                } 
             }
-            //articulosArray = JSON.parse(localStorage.getItem("carrito2"));
-            //probar a tomar el arreglo del localStorage y mostrar eso
-
             mostrarArticulos(articulosArray);
             
             calcularPrecioSubtotal(articulosArray);
@@ -267,27 +260,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
             localStorage.setItem("tipoEnvio", "Premium")
             localStorage.setItem("tipoPago", "Transferencia")
             mostrarDetallesDePago("Transferencia");
-            
+        }
+    let borrarArray = document.getElementsByName("borrar"); 
+    
     for(let i=0; i< borrarArray.length; i++){
         let borra = borrarArray[i];
         borra.addEventListener("click", ()=>{
             articulosArray.splice(i,1);
-            
             let tipoEnvio = localStorage.getItem("tipoEnvio")
-            
-            mostrarArticulos(articulosArray)
+            //localStorage.setItem("carrito2", JSON.stringify(articulosArray))
+            mostrarArticulos(articulosArray);
             calcularPrecioSubtotal(articulosArray);
             mostrarCostoEnvio(tipoEnvio);
             mostrarPrecioTotal(tipoEnvio);
-
-            
         })
     }
-        }
     })
 
+
+    
+
     document.getElementById("btnTipoEnvio").addEventListener("click", ()=>{
-            //mostrarTipoEnvio();
+            
             document.getElementById("opcion1").addEventListener("click", ()=>{
                 localStorage.setItem("tipoEnvio", "Premium")
                 document.getElementById("infoEnvio").innerHTML =`
@@ -351,7 +345,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                 title: 'Finalizó la compra con éxito',
             })
             event.preventDefault()
-            event.stopPropagation()
+            //event.stopPropagation()
       }
 
     })

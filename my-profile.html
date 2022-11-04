@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -54,10 +55,111 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row">
+        <div class="col">
+      <div id="cardInfoPerfil" class="card cardProfile">
+        <div class="card-body">
+          <h3 class="card-title">Mi Perfil</h3>
+          
+          <img id="imagePerfil" type="button" class="rounded-circle"   data-bs-trigger="hover focus" data-bs-toggle="popover" data-bs-content="Clickea para editar la foto" src="img/img_perfil.png" alt="">
+           <div id="alertImage">
+          </div>
+          <br>
+          <div id="datosPersonales">
+          <h3 id="nombrePerfil">Mi nombre</h3>
+          <p id="emailPerfil">miemail@mail.com</p>
+          <h5 id="telefonoPerfil">Contacto: xxxxxxxxx</h5>
+          </div>
+          <button id="btnEditar" type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar Perfil</button>       
+        </div>
       </div>
     </div>
+      <div class="col">
+      <div id="cardOpciones" class="card cardProfile" >
+        <div class="card-body">
+          <div class="row" style="margin-left: 40px;  margin-top: 60px;">
+            <div class="col">
+              <i id="listaDeseos" class="far fa-heart iconProfile" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi lista de deseos"></i>
+              
+            </div>
+            <div class="col">
+              <i id="misCupones" class="fas fa-receipt iconProfile" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mis cupones"></i>
+              
+            </div>
+            <div class="col">
+              <i class="fas fa-shopping-cart iconProfile" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi carrito"></i>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="cardSelect">
+      </div>
+    </div>
+    </div>
+
+    <div id="modalEditar">
+      <div class="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div id class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar perfil</h5>
+              <div id="btnCerrar">
+                <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            </div>
+            <div class="modal-body">
+              <form id="formulario" class="needs-validation" novalidate>
+                <div class="row">
+                <div class="col">
+                  <label for="nombre1">Primer nombre</label>
+                  <input id="nombre1" class="form-control" type="text" required>
+                  <div class="invalid-feedback">
+                    Introduzca su nombre
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="nombre2">Segundo nombre</label>
+                  <input id="nombre2" class="form-control" type="text">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="apllido1">Primer apellido</label>
+                  <input id="apellido1" type="text" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Introduzca su apellido
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="apellido2">Segundo apellido</label>
+                  <input id="apellido2" type="text" class="form-control">
+                </div>
+              </div>
+                <div>
+                  <label for="email">E-mail</label>
+                  <input id="email" type="text" class="form-control" required>
+                  <div class="invalid-feedback">
+                    Introduzca su e-mail
+                  </div>
+                </div>
+                <label for="telefono">Telefono de contacto</label>
+                <input id="telefono" type="text" class="form-control">
+                <br>
+                <label for="color">Selecciona un color para personalizar tu perfil</label>
+                <br>
+                <input id="color" type="color" value="#dbdd98">
+            </div>
+            <div class="modal-footer">
+              <button id="btnGuardar" type="submit" class="btn btn-dark">Guardar</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -72,6 +174,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
