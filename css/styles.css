@@ -356,8 +356,8 @@ body{
     height: 250px;
   }
   #imagePerfil{
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 130px;
     float:left;
     margin-top: 20px;
     background-color: white;
@@ -375,7 +375,7 @@ body{
     width:700px;
   }
 }
-/*pantalla de computadora mia*/
+/*pantalla de computadora mia o mas grande*/
 @media (min-width: 1199px){
   #cardInfoPerfil{
     width: 350px; 

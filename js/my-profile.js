@@ -43,19 +43,6 @@ function llenarFormulario(){
         document.getElementById("telefono").value = telefono;
 }
 
-
-function utf8_to_b64( str ) {
-    return window.btoa(unescape(encodeURIComponent( str )));
-  }
-  
-  function b64_to_utf8( str ) {
-    return decodeURIComponent(escape(window.atob( str )));
-  }
-//
-function codificarImagen(imagen){
-    let enBase64 = utf8_to_b64(imagen);
-    localStorage.setItem("img", enBase64);
-}
 function cambiarImagen(){
     let nuevaImg = document.getElementById("formFileSm").files;
     if (nuevaImg.length > 0){
@@ -71,11 +58,38 @@ function cambiarImagen(){
     }
 }
 
+function vistaPreviaImg(){
+    document.getElementById("fotoSeleccionada").innerHTML = '<img id="vistaPrevia" src="" class="img-fluid" alt=""></img>'
+    console.log(document.getElementById("formFileSm").files)
+    //document.getElementById("vistaPrevia").src = localStorage.getItem("img");
+}
+
+function mostrarToastBienvenida(nombre){
+    let htmlContentToAppend = `
+    <div class="toast-container position-absolute top-0 end-0 p-3" style="margin-top:500px">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="" class="rounded me-2" alt="">
+        <strong class="me-auto">Bienvenid@</strong>
+        <small class="text-muted">2 seconds ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        ¡Hola ${nombre}! Gracias por registrarte en nuestra página.
+        <br>
+        ¡Felices compras!
+      </div>
+    </div>
+  </div>`
+  document.getElementById("toast").innerHTML = htmlContentToAppend;
+
+}
+
 document.addEventListener("DOMContentLoaded", ()=>{
     llenarFormulario();
-
-    codificarImagen("img/img_perfil.png");
-    mostrarDatosPerfil();
+    if(localStorage.getItem("nombre1") != "null")
+        mostrarToastBienvenida(localStorage.getItem("nombre1"));
+        mostrarDatosPerfil();
     let form = document.getElementById("formulario");
     form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {          
@@ -93,17 +107,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     })
     
-    document.getElementById("btnGuardar").addEventListener("click", ()=>{
-        
-    })
 
     document.getElementById("imagePerfil").addEventListener("click", ()=>{
         Swal.fire({
-            title: "Selecciona la imagen",
+            title: "Selecciona una imagen",
             html:`
             <div id="fotoSeleccionada"></div>
             <div class="mb-3">
-            <label for="formFileSm" class="form-label">Small file input example</label>
             <input accept="image/*" class="form-control form-control-sm" id="formFileSm" type="file">
           </div>
           `,
@@ -111,11 +121,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
             confirmButtonColor: 'black',
             cancelButtonColor: 'red',
             confirmButtonText: 'Guardar!',
-            cancelButtonText: "Cancelar"
+            cancelButtonText: "Cancelar",
             
           }).then((result) => {
             if (result.isConfirmed) {
-                cambiarImagen();   //no funciona 
+                cambiarImagen(); 
             }
           })
     })
@@ -123,6 +133,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
     document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
       new bootstrap.Popover(popover)
+    })
+
+//inicializacion de toasts
+    
+document.querySelectorAll('.toast')
+    .forEach(toastNode => {
+      const toast = new bootstrap.Toast(toastNode, {
+        autohide: false
+      })
+
+      toast.show()
     })
 
     //inicializacion de tooltip
