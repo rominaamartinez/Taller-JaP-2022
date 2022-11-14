@@ -1,5 +1,4 @@
 
-
 function mostrarDatosPerfil(){
     if(localStorage.getItem("nombre1") != "null"){
         document.getElementById("btnCerrar").innerHTML = `<button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`
@@ -14,7 +13,7 @@ function mostrarDatosPerfil(){
         //aca tengo que poner para que salte la modal ya que no estan los datsos en el local storage
         document.getElementById("btnCerrar").innerHTML =""
         let myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {})
-        myModal.show()  
+        myModal.show()
     }
 
 }
@@ -27,9 +26,8 @@ function llenarFormulario(){
     let apellido2 = localStorage.getItem("apellido2")
     let telefono = localStorage.getItem("telefono")
     let color = localStorage.getItem("color")
-            console.log(color)
-            document.getElementById("cardOpciones").style.backgroundColor = color;
-            document.getElementById("cardInfoPerfil").style.backgroundColor = color;
+    document.getElementById("cardOpciones").style.backgroundColor = color;
+    document.getElementById("cardInfoPerfil").style.backgroundColor = color;
 
     if(nombre1 != "null")
         document.getElementById("nombre1").value = nombre1;
@@ -89,7 +87,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     llenarFormulario();
     if(localStorage.getItem("nombre1") != "null")
         mostrarToastBienvenida(localStorage.getItem("nombre1"));
-        mostrarDatosPerfil();
+    mostrarDatosPerfil();
     let form = document.getElementById("formulario");
     form.addEventListener('submit', function (event) {
         if (!form.checkValidity()) {          
